@@ -1,7 +1,11 @@
 const express = require('express')
+const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const app = express()
 const port = 3000
+
+app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs'}))
+app.set('view engine', 'hbs')
 
 mongoose.connect('mongodb://localhost/todo_list')
 const db = mongoose.connection
@@ -14,7 +18,7 @@ db.once('open', () => {
 
 
 app.get('/', (req, res) => {
-  res.send("Hollow World")
+  res.render('index')
 })
 
 app.listen(port, () => {
