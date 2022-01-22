@@ -7,7 +7,7 @@ const methodOverride = require('method-override')
 const routes = require('./routes')
 const req = require('express/lib/request')
 const app = express()
-const port = 3000
+const PORT = process.env.PORT || 3000
 
 
 app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs'}))
@@ -17,6 +17,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(routes)
 require('./config/mongoose')
 
-app.listen(port, () => {
-  console.log(`APP is running on port:${port}`)
+app.listen(PORT, () => {
+  console.log(`APP is running on port:${PORT}`)
 })
