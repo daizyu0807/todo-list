@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     .lean()
     .sort({ _id: 'asc' })
     .then(todos => res.render('index', { todos }))
-    .catch(error => console.error('error'))
+    .catch(error => console.error(error))
 })
 
 module.exports = router
